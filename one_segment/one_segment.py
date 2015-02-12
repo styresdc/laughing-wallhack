@@ -6,6 +6,8 @@ one.py
 Digest only the first beat of every bar.
 
 By Ben Lacker, 2009-02-18.
+
+Modificataions by Dixon Styres, Jan 2015
 """
 import echonest.remix.audio as audio
 

@@ -3,7 +3,7 @@
 #music sim
 
 #working on xquartz, pretty sure it might need other things for xming
-#also not exaclty sure what im looking at, guessing it is time vs value (i.e. pitches looks weird)
+#also not exaclty sure what im looking at, pretty sure it is time vs value (i.e. pitches looks weird)
 
 from pyechonest import track
 import matplotlib.pyplot as plt

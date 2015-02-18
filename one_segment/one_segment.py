@@ -3,7 +3,8 @@
 """
 one.py
 
-Digest only the first beat of every bar.
+Digest only the first beat of every beat.
+
 
 By Ben Lacker, 2009-02-18.
 
@@ -21,7 +22,7 @@ Example:
 
 def main(input_filename, output_filename):
     audiofile = audio.LocalAudioFile(input_filename)
-    bars = audiofile.analysis.beats
+    bars = audiofile.analysis.beats ##switch to beats rather than bars
     collect = audio.AudioQuantumList()
     for bar in bars:
         collect.append(bar.children()[0])

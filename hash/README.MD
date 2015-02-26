@@ -4,7 +4,8 @@ How can we quickly compare between multiple songs.
 # Question
 1. How can we store song data in such a way that they are quickly accesible?
 2. How should we sort simaler songs?
-3. Where to go from here?
+3. How we can hash
+4. Where to go from here?
 
 # Resources
 1. [Music Info Retrevial]
@@ -69,10 +70,15 @@ function preprocessTrack(track) {
 
 ```
 
-### 3. Where to go from here?
+### 3. Mini-abstract and relevance of [Letting no music go unreccognized]
+Modern technology has given us the ability to quickly analyze and download a heard song to our phones based on simply a 15
+second analysis. How can we use this in our research. Creating a algorithim to so this is simply neccesary to finding the optimal way to compare songs.
+
+### 4. Where to go from here?
 We need to find a databse that suits are needs, and to create a python fucntion that like the infinte jukebox can hash a song and retunrn a value based on its attributes.
 While looking for simaler songs to switch between, we can fingerprint it and compare it to to databse.
 
 
 [Music Info Retrevial]: http://www.marsyas.info/acm2009_tutorial.pdf
 [The Infinite Jukebox]: http://labs.echonest.com/Uploader/index.html
+[Letting no music go unreccognized]:http://illumin.usc.edu/109/letting-no-music-go-unrecognized/

@@ -6,6 +6,7 @@ from pyechonest import track
 import echonest.remix.audio as audio
 
 fifths = []
+run1 = []
 
 def main():
     audio_file = audio.AudioAnalysis('TRKPXWQ145D2A22467')
@@ -22,11 +23,38 @@ def main():
     fifths.append(a[0][3])
     fifths.append(a[0][10])
     fifths.append(a[0][5])
+    
+    hash(fifths)
+
+def hash(five):
+    
+    if(five[0]> five[1]):
+        run1.append(1)
+    else:
+        run1.append(0)
+    if(five[2]>five[3]):
+        run1.append(1)
+    else:
+        run1.append(0)
+    if(five[4]> five[5]):
+        run1.append(1)
+    else:
+        run1.append(0)
+    if(five[6]>five[7]):
+        run1.append(1)
+    else:
+        run1.append(0)
+    if(five[8]> five[9]):
+        run1.append(1)
+    else:
+        run1.append(0)
+    if(five[10]>five[11]):
+        run1.append(1)
+    else:
+        run1.append(0)
 
 
-    print a[0] 
-    print fifths
-
+    print run1
 
 if  __name__ =='__main__':
     main()

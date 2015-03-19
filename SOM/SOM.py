@@ -42,11 +42,10 @@ def sMake(vector):
         for i in range(0, 24):
             dist = euc(vector)
             print dist
-
 def euc(vector):
     rand = []
     index = 0
-    maxDist = 0
+    maxDist = 2
     rand.append(random.choice(vector))
     for i in range(0,len(w)):
         a = rand

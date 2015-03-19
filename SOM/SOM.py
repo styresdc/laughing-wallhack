@@ -49,10 +49,10 @@ def euc(vector):
     maxDist = 0
     rand.append(random.choice(vector))
     for i in range(0,len(w)):
-        a = w[i]
-        b = rand
+        a = rand
+        b = w[i]
         dist = np.linalg.norm(a-b)
-        if(dist>maxDist):
+        if(maxDist>dist):
             maxDist = dist
             index = i
     return index

@@ -16,6 +16,7 @@ rand = []
 random_index = 0
 ecdist = 0
 tht = 0
+count = 0
 
 w = np.random.uniform(0.0, 1.0, (20,20,12))
 
@@ -45,18 +46,19 @@ def app(vector):
 def comp(vector):
     for s in range(1,360):
         for i in range(1,24):
-            euc(vector)
+          retInd =  euc(vector)
+          print retInd
 
 def euc(vector):
-    count = 0
     rand = []
+    retInd = []
     index = 0
     maxDist = 2
     random_index = 0
     random_index = randrange(0,len(vector))
     rand.append(vector[random_index])
-    print rand
-    count = count + 1
+    global count 
+    count += 1
     for i in range(0,20):
         for j in range(0,20):
             a = rand
@@ -65,8 +67,9 @@ def euc(vector):
             if(maxDist>ecdist):
                 maxDist = ecdist
                 index = i
-    print count
-    return index
+                index2 = j
+    retInd = [index,index2]
+    return retInd
 
 def theta(u,v,s):
     aph = alpha(20,s,20)

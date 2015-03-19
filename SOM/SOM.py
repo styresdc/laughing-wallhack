@@ -4,57 +4,78 @@
 
 #Forms a Self-organizing map for a given track id
 
-from pyechonest import track
-import echonest.remix.audio as audio
 from matplotlib.pylab import *
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+from random import randrange
 
 fifths = []
 map = []
 rand = []
-w = np.random.uniform(0.0, 1.0, (30,12))
-def main():
-    audio_file = audio.AudioAnalysis('TRKPXWQ145D2A22467')
-    a = audio_file.segments.pitches
-    
-    for i in range(0,len(a)):
-        fifths = []
-        fifths.append(a[i][0])
-        fifths.append(a[i][7])
-        fifths.append(a[i][2])
-        fifths.append(a[i][9])
-        fifths.append(a[i][4])
-        fifths.append(a[i][11])
-        fifths.append(a[i][6])
-        fifths.append(a[i][1])
-        fifths.append(a[i][8])
-        fifths.append(a[i][3])
-        fifths.append(a[i][10])
-        fifths.append(a[i][5])
-        map.append(fifths)
+random_index = 0
+ecdist = 0
+tht = 0
 
-    sMake(map)
+w = np.random.uniform(0.0, 1.0, (20,20,12))
 
-def sMake(vector):
-    for s in range(0,1):
-        for i in range(0, 24):
-            dist = euc(vector)
-            print dist
+def_cm = [[0.51, 0.03, 0.12, 0.09, 0.30, 0.19, 0.07, 0.28, 0.09, 0.24, 0.06, 0.00],[0.47,0.06,0.07,0.39,0.03,0.28,0.00,0.30,0.25,0.10,0.06,0.10]]
+
+shift = []
+
+in_cm = []
+
+#append to map
+#circular shift
+#append that
+
+#or cminor
+def app(vector):
+    for i in range(0,12):
+        shift = np.roll(def_cm[0],i)
+        in_cm.append(shift)
+        shift = []
+        shift = np.roll(def_cm[1],i)
+        in_cm.append(shift)
+        shift = []
+    for i in range(0,24):
+        shift.append(in_cm[i].tolist())
+    comp(shift)
+
+def comp(vector):
+    for s in range(1,360):
+        for i in range(1,24):
+            euc(vector)
+
 def euc(vector):
+    count = 0
     rand = []
     index = 0
     maxDist = 2
-    rand.append(random.choice(vector))
-    for i in range(0,len(w)):
-        a = rand
-        b = w[i]
-        dist = np.linalg.norm(a-b)
-        if(maxDist>dist):
-            maxDist = dist
-            index = i
+    random_index = 0
+    random_index = randrange(0,len(vector))
+    rand.append(vector[random_index])
+    print rand
+    count = count + 1
+    for i in range(0,20):
+        for j in range(0,20):
+            a = rand
+            b = w[i][j]
+            ecdist = np.linalg.norm(a-b)
+            if(maxDist>ecdist):
+                maxDist = ecdist
+                index = i
+    print count
     return index
 
+def theta(u,v,s):
+    aph = alpha(20,s,20)
+    return (e**((ecdist**2)/(2*(aph))))
+
+def alpha(r,s,c):
+    print s
+    return (0.3*(r-(s/c)))
+
+
 if  __name__ =='__main__':
-    main()
+    app(def_cm)

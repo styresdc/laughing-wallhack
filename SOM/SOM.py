@@ -7,6 +7,7 @@
 from matplotlib.pylab import *
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 import random
 from random import randrange
 
@@ -17,6 +18,7 @@ random_index = 0
 ecdist = 0
 tht = 0
 count = 0
+s = np.random.uniform(0.0, 1.0, (20,20))
 
 w = np.random.uniform(0.0, 1.0, (20,20,12))
 
@@ -46,21 +48,20 @@ def app(vector):
     comp(shift)
 
 def comp(vector):
-    for s in range(1,30):
+    for s in range(1,20):
         for i in range(1,24):
           retInd = euc(vector)
           tht = theta(retInd[2],(retInd[0],retInd[1]),s)
           lst = last(retInd[2], (retInd[0],retInd[1]))
           global w
-          w[retInd[0]][[retInd[1]]] = (w[retInd[0]][[retInd[1]]]) + (tht*0.02*lst)
-        if(s % 10 == 0):
-            print s
-            plot()
-
+          upd = (w[retInd[0]][[retInd[1]]]) + (tht*0.02*lst)
+          w[retInd[0]][[retInd[1]]] = upd
+          plot()
 
 def plot():
-    n = def_cm[1]
-    s = np.random.uniform(0.0, 1.0, (20,20))
+    n = def_cm[0]
+    # plt.imshow(s, interpolation = 'nearest')
+    # plt.colorbar()
     #calculate distance beween c major
     #create a 2d array fill with distance form each node to c major
     #have c major vector
@@ -100,7 +101,7 @@ def euc(vector):
 def theta(u,v,s):
     aph = alpha(19,s,20)
     euc = tor(u,v)
-    return (e**(-(euc**2)/(2*(aph))))
+    return (math.e**(-(euc**2)/(2*(aph))))
 
 def alpha(r,s,c):
     

@@ -17,6 +17,7 @@ random_index = 0
 ecdist = 0
 tht = 0
 count = 0
+radius = 20
 
 w = np.random.uniform(0.0, 1.0, (20,20,12))
 
@@ -32,6 +33,7 @@ in_cm = []
 
 #or cminor
 def app(vector):
+    global in_cm
     for i in range(0,12):
         shift = np.roll(def_cm[0],i)
         in_cm.append(shift)
@@ -41,13 +43,16 @@ def app(vector):
         shift = []
     for i in range(0,24):
         shift.append(in_cm[i].tolist())
+    in_cm = shift
     comp(shift)
 
 def comp(vector):
     for s in range(1,360):
         for i in range(1,24):
-          retInd =  euc(vector)
-          print retInd
+          retInd = euc(vector)
+          tht = theta(retInd[2],(retInd[0],retInd[1]),s)
+          lst = last(retInd[2], (retInd[0],retInd[1]))
+          print lst
 
 def euc(vector):
     rand = []
@@ -57,8 +62,6 @@ def euc(vector):
     random_index = 0
     random_index = randrange(0,len(vector))
     rand.append(vector[random_index])
-    global count 
-    count += 1
     for i in range(0,20):
         for j in range(0,20):
             a = rand
@@ -68,17 +71,31 @@ def euc(vector):
                 maxDist = ecdist
                 index = i
                 index2 = j
-    retInd = [index,index2]
+    retInd = [index,index2,random_index]
     return retInd
 
 def theta(u,v,s):
-    aph = alpha(20,s,20)
-    return (e**((ecdist**2)/(2*(aph))))
+    global radius
+    radius = radius - 1
+    aph = alpha(19,s,20)
+    euc = tor(u,v)
+    return (e**(-(euc**2)/(2*(aph))))
 
 def alpha(r,s,c):
-    print s
+    
     return (0.3*(r-(s/c)))
 
+def tor(u,v):
+    global in_cm
+    a = in_cm[u]
+    b = w[v[0]][v[1]]
+    ecdist = np.linalg.norm(a-b)
+    return ecdist
+
+def last(u,v):
+    a = in_cm[u]
+    b = w[v[0]][v[1]]
+    return a-b
 
 if  __name__ =='__main__':
     app(def_cm)

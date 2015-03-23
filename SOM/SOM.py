@@ -17,7 +17,6 @@ random_index = 0
 ecdist = 0
 tht = 0
 count = 0
-radius = 20
 
 w = np.random.uniform(0.0, 1.0, (20,20,12))
 
@@ -47,12 +46,36 @@ def app(vector):
     comp(shift)
 
 def comp(vector):
-    for s in range(1,360):
+    for s in range(1,30):
         for i in range(1,24):
           retInd = euc(vector)
           tht = theta(retInd[2],(retInd[0],retInd[1]),s)
           lst = last(retInd[2], (retInd[0],retInd[1]))
-          print lst
+          global w
+          w[retInd[0]][[retInd[1]]] = (w[retInd[0]][[retInd[1]]]) + (tht*0.02*lst)
+        if(s % 10 == 0):
+            print s
+            plot()
+
+
+def plot():
+    n = def_cm[1]
+    s = np.random.uniform(0.0, 1.0, (20,20))
+    #calculate distance beween c major
+    #create a 2d array fill with distance form each node to c major
+    #have c major vector
+    #fucntion takes in w and a vecotr, computes distance between input and nodes and fills 20*20 array and show
+    
+    for i in range(0,20):
+        for j in range(0,20):
+            a = n
+            b = w[i][j]
+            ecdist = np.linalg.norm(a-b)
+            s[i][j] = ecdist
+    plt.imshow(s, interpolation = 'nearest')
+    plt.colorbar()
+    plt.show()
+
 
 def euc(vector):
     rand = []
@@ -75,8 +98,6 @@ def euc(vector):
     return retInd
 
 def theta(u,v,s):
-    global radius
-    radius = radius - 1
     aph = alpha(19,s,20)
     euc = tor(u,v)
     return (e**(-(euc**2)/(2*(aph))))

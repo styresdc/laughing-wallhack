@@ -1,76 +1,27 @@
 # Problem
-How can we quickly compare between multiple songs.
+What feaatures make a "good" transition?
 
 # Question
-1. How can we store song data in such a way that they are quickly accesible?
-2. How should we sort simaler songs?
-3. How we can hash
+1. How should we approach a transition?
+2. What elements make a good transition?
+3. Techniques for a good transition.
 4. Where to go from here?
 
 # Resources
-1. [Music Info Retrevial]
+1. [Transition Help]
 2. [The Infinite Jukebox]
 
-### 1. Mini-abstract and relevance of [Music Info Retrevial]
-Music information retrevial has been around for hundreds of years, from sheet music, to the modern mp3 player. It even extends to services such as shazam and others.
-This slideshow gives a presentation of the history of music info retrevial, its purpose, and overviews of how its done.
-Some sort of sorted database would be a quick an easy way to acess song data.
+### 1. How should we approach a transition?
+Transitions have been an integral part of composing music since inception, and have more recently become an art post-composure; the modern DJ. The modern DJ uses several different techniques to "mix" songs so that these transitions are well planned, and cohesive. Luckily, they have the advantage of leeway in planning these transitions, the part we are interested in is how they do this in real time. 
 
-### 2. Mini-abstract and relevance of [The infinite jukebox]
-The infinite jukebox provides away to evaluate sections of songs and rate them bases on similarity. 
-It would be an interesting task to see if we could turn this into a hash function so that we can store songs in a DB
-```javascript
-function preprocessTrack(track) {
-                trace('preprocessTrack');
-                var types = ['sections', 'bars', 'beats', 'tatums', 'segments'];
+### 2. What elements make a good transition?
+Mixing is the art of taking two or more pieces of music and combining them into a single work. The principle technique for mixing music is beatmatching, in which a DJ synchronizes the beats of two songs. When composing music, an artist may decide to completely change the entire direction of a song, done mostly by stopping and restarting. This is a perfect example of a transition within a song, so much so that the listener preceives it as a linear progression.
 
-                
-                for (var i in types) {
-                    var type = types[i];
-                    trace('preprocessTrack ' + type);
-                    for (var j in track.analysis[type]) {
-                        var qlist = track.analysis[type]
+<iframe width="420" height="315" src="https://www.youtube.com/embed/UExzmnZLPdI" frameborder="0" allowfullscreen></iframe>
 
-                        j = parseInt(j)
+A good tranition should sound like a linear progresion through a song.
 
-                        var q = qlist[j]
-                        q.track = track;
-                        q.which = j;
-                        if (j > 0) {
-                            q.prev = qlist[j-1];
-                        } else {
-                            q.prev = null
-                        }
-                        
-                        if (j < qlist.length - 1) {
-                            q.next = qlist[j+1];
-                        } else {
-                            q.next = null
-                        }
-                    }
-                }
-
-                connectQuanta(track, 'sections', 'bars');
-                connectQuanta(track, 'bars', 'beats');
-                connectQuanta(track, 'beats', 'tatums');
-                connectQuanta(track, 'tatums', 'segments');
-
-                connectFirstOverlappingSegment(track, 'bars');
-                connectFirstOverlappingSegment(track, 'beats');
-                connectFirstOverlappingSegment(track, 'tatums');
-
-                connectAllOverlappingSegments(track, 'bars');
-                connectAllOverlappingSegments(track, 'beats');
-                connectAllOverlappingSegments(track, 'tatums');
-
-
-                filterSegments(track);
-            }
-
-
-```
-
-### 3. Mini-abstract and relevance of [Letting no music go unreccognized]
+### 3. Techniques for a good transition.
 Modern technology has given us the ability to quickly analyze and download a heard song to our phones based on simply a 15
 second analysis. How can we use this in our research. Creating a algorithim to so this is simply neccesary to finding the optimal way to compare songs.
 
@@ -79,6 +30,6 @@ We need to find a databse that suits are needs, and to create a python fucntion 
 While looking for simaler songs to switch between, we can fingerprint it and compare it to to databse.
 
 
-[Music Info Retrevial]: http://www.marsyas.info/acm2009_tutorial.pdf
+[Transition Help]: http://www.transitions.dj/manual/pgs/mixing.html
 [The Infinite Jukebox]: http://labs.echonest.com/Uploader/index.html
 [Letting no music go unreccognized]:http://illumin.usc.edu/109/letting-no-music-go-unrecognized/

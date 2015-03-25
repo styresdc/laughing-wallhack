@@ -17,7 +17,10 @@ Transitions have been an integral part of composing music since inception, and h
 ### 2. What elements make a good transition?
 Mixing is the art of taking two or more pieces of music and combining them into a single work. The principle technique for mixing music is beatmatching, in which a DJ synchronizes the beats of two songs. When composing music, an artist may decide to completely change the entire direction of a song, done mostly by stopping and restarting. This is a perfect example of a transition within a song, so much so that the listener preceives it as a linear progression.
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/UExzmnZLPdI" frameborder="0" allowfullscreen></iframe>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=UExzmnZLPdI
+" target="_blank"><img src="http://img.youtube.com/vi/UExzmnZLPdI/0.jpg" 
+alt="Linear Transition in a a song" width="240" height="180" border="10" /></a>
+
 
 A good tranition should sound like a linear progresion through a song.
 

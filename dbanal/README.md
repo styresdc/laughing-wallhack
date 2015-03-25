@@ -9,7 +9,6 @@ What feaatures make a "good" transition?
 
 # Resources
 1. [Transition Help]
-2. [The Infinite Jukebox]
 
 ### 1. How should we approach a transition?
 Transitions have been an integral part of composing music since inception, and have more recently become an art post-composure; the modern DJ. The modern DJ uses several different techniques to "mix" songs so that these transitions are well planned, and cohesive. Luckily, they have the advantage of leeway in planning these transitions, the part we are interested in is how they do this in real time. 
